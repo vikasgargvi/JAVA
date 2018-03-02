@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class Sort
+public class RadixBucketSort
 {
 	private ArrayList<Integer> items;
 	private int size;
 
-	public Sort(ArrayList<Integer> arr)
+	public RadixBucketSort(ArrayList<Integer> arr)
 	{
 		this.size = arr.size();
 		items = new ArrayList<Integer>(this.size);
