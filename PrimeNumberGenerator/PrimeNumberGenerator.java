@@ -1,45 +1,46 @@
+import java.util.ArrayList;
+
 public class PrimeNumberGenerator
 {
 	private int last;
-	private int index;
-	private int prev;
+	private ArrayList<Integer> list;
 
 	public PrimeNumberGenerator(int k)
 	{
 		this.last = k; 
-		this.index = 2;
-	}
+		list = new ArrayList<Integer>(k);
 
-	public boolean hasNext()
-	{
+		int value = 2;
+		int count = 0;
 		int flag;
-		while(this.index <= this.last)
+
+		// initializing list with k prime numbers
+		while(count < this.last)
 		{
 			flag = 0;
-			for (int i = 2; i <= Math.sqrt(index); i++)
+			for (int i = 2; i <= Math.sqrt(value); i++)
 			{
-				if(this.index % i == 0)
+				if(value % i == 0)
 				{
 					flag = 1;
 					break;
 				}
 			}
-
-			this.prev = this.index;
-			if(this.index != 2)
-				this.index += 2;
-			else   
-				this.index++;
-
 			if(flag == 0)
-				return true;
-
+			{
+				this.list.add(count++, value);
+			}
+			if(value != 2)
+				value += 2;
+			else   
+				value++;
 		}
-		return false;
 	}
 
-	public int next()
+	// get the list
+	public ArrayList<Integer> getPrime()
 	{
-		return this.prev;
+		return this.list;
 	}
+	
 }
