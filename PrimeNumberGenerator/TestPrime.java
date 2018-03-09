@@ -1,20 +1,30 @@
+import java.util.*;
+
 public class TestPrime
 {
 	public static void main(String[] args)
 	{
+		Scanner inp = new Scanner(System.in);
 
-		long startTime = System.nanoTime();
+		System.out.print("Enter the value of k? ");
+		int k = inp.nextInt();
 
-
-		PrimeNumberGenerator prime = new PrimeNumberGenerator(100000);
-
-		while(prime.hasNext())
+		// check k must be greater than 0 to generat prime numbers 
+		if(k < 0)
 		{
-			System.out.print(" " + prime.next());
+			System.out.println("Wrong Input");
+			return;
 		}
 
-		long endTime   = System.nanoTime();
-		double totalTime = endTime - startTime;
-		System.out.println("\nTotal time(in ms): " + totalTime / 1000000);
+		// Generate k Prime Numbers 
+		PrimeNumberGenerator p = new PrimeNumberGenerator(k); 
+
+		// Iterator object to Iterate the list
+		MyIterator itr = new MyIterator(p.getPrime());
+
+		while(itr.hasNext())
+		{
+			System.out.print(itr.next() + " ");
+		}
 	}
 }
